@@ -2,6 +2,7 @@ import 'package:climate_app/app.dart';
 import 'package:climate_app/core/services/database/db_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'core/services/service_locator.dart';
 
@@ -21,4 +22,6 @@ initialize() async {
 
   //db init
   await dbInit();
+
+  await dotenv.load(fileName: "lib/assets/env/config.env");
 }
