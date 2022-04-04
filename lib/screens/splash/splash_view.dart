@@ -1,5 +1,8 @@
+import 'package:climate_app/core/extensions/context_extensions.dart';
 import 'package:climate_app/screens/splash/splash_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class SplashView extends StatefulWidget {
@@ -19,10 +22,26 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.orange,
-        child: const Center(
-          child: Text("Splash screen"),
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            LottieBuilder.asset(
+              "lib/assets/lottie/splash_lottie.json",
+              width: ScreenUtil().setWidth(250),
+              height: ScreenUtil().setHeight(200),
+              fit: BoxFit.fitWidth,
+            ),
+            ScreenUtil().setVerticalSpacing(20),
+            Text(
+              "CLIMA",
+              style: context.typo.titleLarge!.copyWith(fontSize: 30),
+            )
+          ],
         ),
       ),
     );
